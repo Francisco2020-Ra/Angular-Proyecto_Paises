@@ -13,10 +13,21 @@ export class PaisService {
   constructor(private httpClient: HttpClient) { }
 
   buscarPais( termino: string): Observable<Pais[]>{
-    const url = `${ this.apiUrl }/name/ ${ termino }`;
+    const url = `${ this.apiUrl }/name/${ termino }`;
 
     return this.httpClient.get<Pais[]>( url); 
   }
 
+  buscarCapital( termino: string): Observable<Pais[]>{
+    const url = `${ this.apiUrl }/capital/${ termino }`;
+
+    return this.httpClient.get<Pais[]>( url); 
+  }
+
+  buscarPaisPorAlpha(id: string){
+    const url = `${ this.apiUrl }/alpha/${ id }`;
+
+    return this.httpClient.get<Pais>( url); 
+  }
   
 }
